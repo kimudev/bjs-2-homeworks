@@ -25,8 +25,6 @@ Student.prototype.setSubject = function (subjectName) {
 Student.prototype.addMarks = function (...marks) {
     if ('marks' in this) {
         this.marks.push(...marks);
-    } else {
-        console.log(`Студент ${this.name} отчислен`);
     };
 };
 
@@ -34,14 +32,11 @@ Student.prototype.addMarks = function (...marks) {
 // console.log(student1);
 
 Student.prototype.getAverage = function () {
-    if ('marks' in this) {
-        let sum = this.marks.reduce((acc, curr) => acc + curr, 0);
-        return sum / this.marks.length;
-    } else if (this.marks.length === 0) {
-        return 0;
-    } else {
+    if (!('marks' in this) || this.marks.length === 0) {
         return 0;
     };
+    let sum = this.marks.reduce((acc, curr) => acc + curr, 0);
+    return sum / this.marks.length;
 };
 
 // console.log(student1.getAverage()); 
