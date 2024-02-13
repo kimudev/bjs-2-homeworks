@@ -38,6 +38,8 @@ Student.prototype.getAverage = function () {
         let sum = this.marks.reduce((acc, curr) => acc + curr, 0);
         return sum / this.marks.length;
         
+    } else if (this.marks.length = 0) {
+        return 0;
     } else {
         return 0;
     };
